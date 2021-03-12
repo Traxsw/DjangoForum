@@ -771,7 +771,7 @@ def invite(request):
     if request.method == "POST":
         try:
             towho = request.POST.get("towho")
-            if not re.match(r'^[0-9a-zA-Z_]{0,19}@[0-9a-zA-Z]{1,13}\.[com,cn,net]{1,3}$', towho):
+            if not re.match(r'^[0-9a-zA-Z_]{0,19}@[0-9a-zA-Z-]{1,13}\.[com,cn,net]{1,3}$', towho):
                 raise RuntimeError('邮箱格式错误！')
             # 这里是发送激活链接
             return HttpResponse(json.dumps({"code": 1, "msg": "发送成功！"}))
